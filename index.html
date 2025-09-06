@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kalkulator Cairan & Multi Obat Injeksi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>💧 Kalkulator Cairan & Multi Obat Injeksi</h2>
+
+    <label>Nama Pasien</label>
+    <input type="text" id="nama">
+
+    <label>Usia (tahun)</label>
+    <input type="number" id="usia" placeholder="cth: 5 untuk anak, 30 untuk dewasa">
+
+    <label>Berat Badan (kg)</label>
+    <input type="number" id="bb" placeholder="kg">
+
+    <label>Jenis Cairan</label>
+    <select id="jenisCairan">
+      <option value="Ringer Laktat">Ringer Laktat (RL)</option>
+      <option value="NaCl 0.9%">NaCl 0.9%</option>
+      <option value="D5%">Dextrose 5% (D5%)</option>
+      <option value="D10%">Dextrose 10% (D10%)</option>
+      <option value="Ringer Asetat">Ringer Asetat</option>
+      <option value="NaCl 3%">NaCl 3%</option>
+      <option value="D5%/NaCl 0.9%">D5%/NaCl 0.9%</option>
+    </select>
+
+    <label>Mode Perhitungan Cairan</label>
+    <select id="mode">
+      <option value="maintenance">Maintenance (Rumatan)</option>
+      <option value="rehidrasi">Rehidrasi</option>
+    </select>
+
+    <div id="rehidrasiOption" style="display:none;">
+      <label>Tingkat Dehidrasi</label>
+      <select id="derajatDehidrasi">
+        <option value="ringan">Ringan (3–5%)</option>
+        <option value="sedang">Sedang (6–9%)</option>
+        <option value="berat">Berat (≥10%)</option>
+      </select>
+    </div>
+
+    <label>Jenis Set Infus</label>
+    <select id="setInfus">
+      <option value="20">Makro (20 tpm)</option>
+      <option value="60">Mikro (60 tpm)</option>
+    </select>
+
+    <label>Durasi Pemberian (jam)</label>
+    <input type="number" id="durasi" placeholder="cth: 24">
+
+    <hr>
+
+    <h3>💉 Tambah Obat Injeksi</h3>
+    <label>Obat</label>
+    <select id="obat">
+      <option value="">-- Pilih Obat --</option>
+      <option value="ranitidin">Ranitidin</option>
+      <option value="ondansetron">Ondansetron</option>
+      <option value="metoclopramide">Metoclopramide</option>
+      <option value="ceftriaxone">Ceftriaxone</option>
+      <option value="ampicillin">Ampisilin</option>
+      <option value="gentamicin">Gentamisin</option>
+      <option value="paracetamol">Paracetamol</option>
+      <option value="diazepam">Diazepam</option>
+      <option value="ketorolac">Ketorolac</option>
+    </select>
+
+    <button type="button" class="add-btn" onclick="tambahObat()">➕ Tambah Obat</button>
+    <div class="hint">Dosis otomatis: <b>anak &lt; 18 th</b> pakai mg/kgBB; <b>dewasa ≥ 18 th</b> sesuai standar.</div>
+
+    <div id="listObat"></div>
+
+    <button class="hitung-btn" onclick="hitung()">Hitung</button>
+
+    <div class="result" id="hasil"></div>
+
+    <div style="display:flex; justify-content: space-between; gap:10px; margin-top:10px;">
+      <button class="export-btn" onclick="exportPDF()">📄 Export PDF</button>
+      <button class="wa-btn" onclick="sendWA()">📲 WhatsApp</button>
+    </div>
+
+    <div class="hint">⚠️ Catatan klinis: cek fungsi ginjal/hati, dosis maksimal, dan gunakan pedoman klinis resmi.</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
